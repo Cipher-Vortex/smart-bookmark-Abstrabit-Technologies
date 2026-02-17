@@ -2,6 +2,7 @@
 
 import { createClient } from '@/utils/supabase/client'
 import { MoveRight } from 'lucide-react'
+import { getURL } from '@/utils/url'
 
 export default function LoginButton() {
   const supabase = createClient()
@@ -10,7 +11,7 @@ export default function LoginButton() {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: `${getURL()}auth/callback`,
       },
     })
   }
