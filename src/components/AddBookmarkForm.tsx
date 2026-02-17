@@ -6,11 +6,11 @@ import { Plus, Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 export default function AddBookmarkForm({ userId }: { userId: string }) {
+  const [supabase] = useState(() => createClient())
   const [url, setUrl] = useState('')
   const [title, setTitle] = useState('')
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
-  const supabase = createClient()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -78,7 +78,7 @@ export default function AddBookmarkForm({ userId }: { userId: string }) {
           ) : (
             <>
               <Plus size={18} />
-              HOARD IT
+              Add Link
             </>
           )}
         </button>

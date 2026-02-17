@@ -13,8 +13,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HOARD | Smart Bookmark App",
-  description: "A digital hoard for web artifacts. Built with existential dread and caffeine.",
+  metadataBase: new URL("https://link-cemetery.vercel.app"),
+  title: "The Link Cemetery | Smart Bookmark App",
+  description: "A digital artifact cemetery for the links you'll never actually visit. Built with Neuralink and caffeine.",
+  keywords: ["bookmark", "links", "digital cemetery", "productivity", "web tools"],
+  authors: [{ name: "Kiran SR" }],
+  openGraph: {
+    title: "The Link Cemetery",
+    description: "A digital artifact cemetery for the links you'll never actually visit.",
+    url: "https://link-cemetery.vercel.app",
+    siteName: "The Link Cemetery",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Link Cemetery",
+    description: "A digital artifact cemetery for the links you'll never actually visit.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

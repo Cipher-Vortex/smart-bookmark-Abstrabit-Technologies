@@ -20,7 +20,7 @@ export default function LoginButton() {
       onClick={handleLogin}
       className="cyber-button text-lg flex items-center gap-2 group"
     >
-      JOIN THE HOARD <MoveRight className="group-hover:translate-x-1 transition-transform" />
+      JOIN THE CLUB <MoveRight className="group-hover:translate-x-1 transition-transform" />
     </button>
   )
 }
