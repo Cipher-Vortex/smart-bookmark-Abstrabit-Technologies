@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #050505;
+  --color-foreground: #ffffff;
+  --color-accent: #00ff88;
+  --color-accent-dark: #00cc6e;
+  --color-cyber-border: #222222;
+  --color-cyber-black: #0a0a0a;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --shadow-brutalist: 4px 4px 0px 0px #222222;
+}
+
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+  --accent: #00ff88;
+  --cyber-border: #222222;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .brutalist-card {
+    @apply border border-cyber-border bg-cyber-black p-4 transition-all duration-300;
+    box-shadow: 4px 4px 0px 0px var(--cyber-border);
+  }
+
+  .brutalist-card:hover {
+    @apply -translate-x-1 -translate-y-1;
+    box-shadow: 8px 8px 0px 0px var(--accent);
+    border-color: var(--accent);
+  }
+
+  .cyber-button {
+    @apply border border-cyber-border bg-accent px-6 py-2 font-bold text-black transition-all duration-200 active:translate-x-0.5 active:translate-y-0.5;
+    box-shadow: 4px 4px 0px 0px #111;
+  }
+
+  .cyber-button:hover {
+    @apply bg-accent-dark;
+    box-shadow: 2px 2px 0px 0px #111;
+  }
+
+  .cyber-input {
+    @apply border border-cyber-border bg-black p-2 text-white outline-none focus:border-accent;
+  }
+}
+
+/* Custom Scrollbar for the Cyber Vibe */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff88;
+}
