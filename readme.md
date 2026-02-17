@@ -1,3 +1,29 @@
+# The Link Cemetery | Smart Bookmark App
+
+A digital artifact cemetery for the links you'll never actually visit. Built with Next.js, Supabase, and a lot of caffeine.
+
+## 🚀 Key Features
+
+- **Digital Grave Creation**: Save and categorize your bookmarks.
+- **Detailed Dossier**: Explore the engineer's blueprint and professional timeline.
+- **Formal Relics**: Access and download the developer's resume.
+- **Self-Healing**: Robust error handling and environment validation.
+
+## 🛠️ Deployment Readiness
+
+This project is optimized for deployment on Vercel or similar platforms.
+
+### Environment Variables
+Ensure the following are set in your production environment:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+### Local Preview
+```bash
+npm run build
+npm run start
+```
+
 ## 🧠 Challenges & "Aha!" Moments
 
 ### 1. The Real-time Ghost

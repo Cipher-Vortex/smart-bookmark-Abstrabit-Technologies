@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
-import { Trash2, ExternalLink } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Trash2, ExternalLink, Hash } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 type Bookmark = {
   id: string
@@ -12,30 +12,38 @@ type Bookmark = {
   created_at: string
 }
 
-export default function BookmarkCard({ bookmark }: { bookmark: Bookmark }) {
+interface Props {
+  bookmark: Bookmark
+  onDeleteSuccess: (id: string) => void
+}
+
+export default function BookmarkCard({ bookmark, onDeleteSuccess }: Props) {
+  const [supabase] = useState(() => createClient())
   const [isDeleting, setIsDeleting] = useState(false)
   const [shake, setShake] = useState(false)
-  const supabase = createClient()
 
   const handleDelete = async () => {
     setShake(true)
     setIsDeleting(true)
     
-    // Artificial delay for the satisfying shake
-    await new Promise(resolve => setTimeout(resolve, 500))
+    // Aesthetic pause for the shake effect
+    await new Promise(resolve => setTimeout(resolve, 400))
 
+    // Optimistically update parent UI
+    onDeleteSuccess(bookmark.id)
+
+    // Background deletion
     const { error } = await supabase
       .from('bookmarks')
       .delete()
       .eq('id', bookmark.id)
 
     if (error) {
-      console.error('Error deleting:', error.message)
-      setIsDeleting(false)
-      setShake(false)
+      console.error('Failed to yeet bookmark:', error.message)
+      // Note: In real production, you'd trigger a toast to say "failed" 
+      // and refresh the list to bring the card back.
     }
   }
-
   return (
     <div className="brutalist-card h-full flex flex-col justify-between group relative overflow-hidden">
       <div className="space-y-4">
@@ -81,7 +89,7 @@ export default function BookmarkCard({ bookmark }: { bookmark: Bookmark }) {
 
       {isDeleting && (
         <div className="absolute inset-0 bg-black/80 flex items-center justify-center backdrop-blur-sm">
-          <p className="text-red-500 font-mono text-xs font-bold animate-pulse">EVISCERATING...</p>
+          <p className="text-red-500 font-mono text-xs font-bold animate-pulse">Deleting...</p>
         </div>
       )}
     </div>
