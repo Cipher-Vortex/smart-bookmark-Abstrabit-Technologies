@@ -24,9 +24,9 @@ export default function AboutPage() {
               <span className="flex items-center gap-1"><MapPin size={12} /> Bengaluru, KA</span>
             </div>
           </div>
-          <Link href="/about/detailed" className="hidden md:flex items-center gap-2 px-4 py-2 bg-accent text-black font-black uppercase text-xs hover:bg-white transition-colors">
+          {/* <Link href="/about/detailed" className="hidden md:flex items-center gap-2 px-4 py-2 bg-accent text-black font-black uppercase text-xs hover:bg-white transition-colors">
             Detailed Portfolio<ExternalLink size={14} />
-          </Link>
+          </Link> */}
         </div>
       </header>
 
